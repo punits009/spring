@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	    xmlns:context="http://www.springframework.org/schema/context"
+	    xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.3.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+	
+	<bean id="emp2" class="Lab1point4.Employee" autowire="byName">
+		<property name="employeeId" value="12345" />
+		<property name="employeeName" value="Harriet" />
+		<property name="salary" value="40000.00" />
+
+	</bean>
+	
+	<bean id="emp3" class="Lab1point4.Employee" autowire="byName">
+		<property name="employeeId" value="12346" />
+		<property name="employeeName" value="Harry" />
+		<property name="salary" value="60000.00" />
+
+	</bean>
+	
+	<bean id="BU" class="Lab1point4.SBU">
+		<constructor-arg value="1" />
+		<constructor-arg value="Product Engineering Services" />
+		<constructor-arg value="Kiran Rao" />
+		<constructor-arg>
+		<list>
+		<ref bean="emp2"/>
+		<ref bean="emp3"/>
+		</list>
+		</constructor-arg>
+	</bean>
+	
+	<bean id="dao" class="Lab1point4.DAO">
+	<constructor-arg>
+	<list>
+	<ref bean="emp2"/>
+	<ref bean="emp3"/>
+	</list>
+	</constructor-arg>
+	</bean>
+	
+	</beans>
